@@ -50,7 +50,7 @@ Change the `database`, `dialect`, `username`, `password` of your's.
 
 Same thing for `src/shared/config/email.config.ts`:
 
-```
+```typescript
 import { createTransport } from "nodemailer";
 
 export const transporter = createTransport({
