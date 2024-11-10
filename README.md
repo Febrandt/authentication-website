@@ -73,3 +73,9 @@ npx tsx src/app.ts
 ```
 
 
+## Front Page
+
+If everything went well the front page will look something like this:
+
+![Front Page](https://i.ibb.co/Z61gX0x/auth.png)
+
