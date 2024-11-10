@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/public/bootstrap.css">
+</head>
+
+<body class="bg-white">
+
+    <%- include('./partials/header.ejs', {user: user})%>
+
+    <div class="container">
+        <div class="row justify-content-center" style="height: 100vh;">
+            <div class="col-md-4">
+                <div class="card mt-5">
+                    <div class="card-header text-center">
+                        <h4>Login</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="login-form">
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                                <small id="email-error" class="text-danger d-none">Please enter a valid email address</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                                <small id="password-error" class="text-danger d-none">Password is required</small>
+                            </div>
+                            <small id="error" class="text-danger d-none">Wrong Email or Password credentials.</small>
+                            <br>
+                            <button type="submit" class="btn btn-primary btn-block mt-2" id="login-button">Login</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <a href="/register">Don't have an account? Register here</a>
+                            <br>
+                            <a href="#">Forgot password?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function validateEmail(email) {
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailPattern.test(email);
+        }
+
+        $(document).ready(function () {
+            $('#login-form').submit(function(event) {
+                event.preventDefault();
+                
+                $('.text-danger').addClass('d-none');
+                $('.form-control').removeClass('border-danger');
+
+                const email = $('#email').val();
+                const password = $('#password').val();
+                
+                if (!validateEmail(email)) {
+                    $('#email-error').removeClass('d-none').text("Please enter a valid email address");
+                    $('#email').addClass('border-danger');
+                    return;
+                }
+                
+                if (!password) {
+                    $('#password-error').removeClass('d-none').text("Password is required");
+                    $('#password').addClass('border-danger');
+                    return;
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/user/login',
+                    data: { 'email': email, 'password': password },
+                    success: function(response) {
+
+                        window.location.href = "/";
+                    },
+                    error: function(xhr) {
+                        
+                            $('#error').removeClass('d-none').text("Incorrect email or password address");
+                            $('#email').addClass('border-danger');
+                            $('#password').addClass('border-danger');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

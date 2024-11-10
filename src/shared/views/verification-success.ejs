@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/public/bootstrap.css">
+</head>
+<body class="bg-white">
+
+    <%- include('./partials/header.ejs', {user: user})%>
+
+    <div class="bg-primary bg-gradient text-white p-6">
+        <div class="text-center">
+            <p class="h1 fw-bolder">🎉🎊Congratulations You Are Verified! 🎉✨</p>
+            <p class="lead">You can comeback to main page now!!!</p>
+            <a class="btn btn-lg btn-light" href="/">Main Page</a>
+        </div>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<header>
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark py-1" id="mainNav">
+        <div class="container pl-5  justify-content-center">
+            <button class="navbar-toggler me-2 position-relative " type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+            <a class="navbar-brand ml-auto center" href="/">Auth Website Template</a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto me-4">
+                    <li class="nav-item"><a class="nav-link" href="/#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
+                </ul>
+                <% if (!user) { %>
+                    <div class="">
+                        <a class="btn btn-light btn-rounded border border-dark text-dark me-1" href="/login">Log In</a>
+                        <a class="btn btn-black btn-rounded bg-primary text-white" href="/register">Subscribe</a>
+                    </div>
+                <% } else { %>
+                    <div class="dropstart">
+                        
+                        <a class="" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="rounded-circle" src="/public/img/pfp.png" style="width: 28px; ">
+                        </a>
+
+                        <ul class="dropdown-menu px-2" aria-labelledby="dropdownMenuLink">
+                            <span class="h-3 ms-1"><%=user.username %></span>
+                            <span class="h-3 ms-1 text-primary"><%=user.email %></span>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-currency-dollar"></i>
+                                Subscription</a></li>
+                            <li><a class="dropdown-item" href="#"> <i class="bi bi-gear"></i>
+                                Configurations</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-box-arrow-right"></i>
+                                Logout</a></li>
+                        </ul>
+                    </div>
+                <% } %>
+            </div>
+            
+        </div>
+      </nav>
+</header>
+<script>
+
+</script>
